@@ -3,12 +3,14 @@ import {
     CRUD_FETCH,
     CRUD_UPDATE,
     CRUD_DELETE,
+    CRUD_NEW,
   } from '../constants/actionTypes';
   
   const doFetchAddCrud = id => ({
     type: CRUD_FETCH_ADD,
     id,
   });
+  
   
   const doFetchCrud = query => ({
     type: CRUD_FETCH,
@@ -25,11 +27,16 @@ import {
     query,
   });
 
-  
+  const doNewCrud = query => ({
+    type: CRUD_NEW,
+    query,
+  });
+
   
   export {
     doFetchAddCrud,
     doFetchCrud,
     doUpdateCrud,
     doDeleteCrud,
+    doNewCrud,
   };

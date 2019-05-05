@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import List from './List';
 
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    keyforRerender: 1
+  }
+
+  getNewKey = () => {
+    
+    
+    this.setState({ keyforRerender: Math.random() });
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <List key={this.state.keyforRerender} reRenderKey={this.getNewKey} />
+      </div>
+    );
+  }
 }
 
 export default App;

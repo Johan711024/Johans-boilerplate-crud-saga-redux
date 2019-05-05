@@ -11,21 +11,27 @@ function* FetchCrud(action) {
 function* UpdateCrud(action) {  
   
   const { query } = action;
-  const result = yield call(updateCrud, query);
-  console.log('Updated CRUD: ' + result)
+  yield call(updateCrud, query);
+  
+  const result = yield call(fetchCrud, query);  
+  yield put(doFetchAddCrud(result));
   
 }
 function* NewCrud(action) {
   
   const { query } = action;
-  const result = yield call(newCrud, query);
-  console.log('New CRUD: ' + result)
+  yield call(newCrud, query);
+  console.log('New CRUD: ')
+  const result = yield call(fetchCrud, query);  
+  yield put(doFetchAddCrud(result));
 }
 function* DeleteCrud(action) {
     
     const { query } = action;
-    const result = yield call(deleteCrud, query)
+    let result = yield call(deleteCrud, query)
     console.log('New CRUD: ' + result)
+    result = yield call(fetchCrud, query);  
+  yield put(doFetchAddCrud(result));
 }
 
 
